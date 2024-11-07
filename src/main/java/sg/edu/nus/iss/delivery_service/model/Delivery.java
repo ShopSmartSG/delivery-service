@@ -1,30 +1,29 @@
 package sg.edu.nus.iss.delivery_service.model;
 
-import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 import lombok.Data;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import javax.persistence.Id;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-@Entity
-@Table(name = "deliveries")
+@Entity(name="deliveries")
 public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
-    private String orderId;
+    private UUID orderId;
+    private UUID deliveryPersonId;
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
-    private String deliveryPersonId;
+    private UUID customerId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private UUID customerId;
+
 }
 
