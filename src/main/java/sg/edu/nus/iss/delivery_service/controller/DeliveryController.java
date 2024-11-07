@@ -19,7 +19,7 @@ public class DeliveryController {
         this.deliveryService = deliveryService;
     }
 
-    @PostMapping("")
+    @PostMapping("/")
     public ResponseEntity<DeliveryResponseStatusDTO> createDeliveryStatus(
             @RequestParam UUID orderId,
             @RequestParam UUID deliveryPersonId,
