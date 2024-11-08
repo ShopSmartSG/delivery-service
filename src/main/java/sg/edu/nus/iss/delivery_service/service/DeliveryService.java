@@ -73,12 +73,17 @@ public class DeliveryService {
         log.info("Updated delivery status for order ID {} to {}", statusUpdateDTO.getOrderId(), statusUpdateDTO.getStatus());
         return new ResponseEntity<>(new DeliveryResponseStatusDTO(statusUpdateDTO.getOrderId(), statusUpdateDTO.getStatus(), statusUpdateDTO.getDeliveryPersonId(), statusUpdateDTO.getCustomerId(), "Delivery status updated"), HttpStatus.OK);
     }
-
-    boolean isValidStatusTransition(DeliveryStatus currentStatus, DeliveryStatus newStatus) {
-        return switch (currentStatus) {
-            case DELIVERY_ACCEPTED -> newStatus == DeliveryStatus.DELIVERY_PICKED_UP || newStatus == DeliveryStatus.CANCELLED;
-            case DELIVERY_PICKED_UP -> newStatus == DeliveryStatus.COMPLETED || newStatus == DeliveryStatus.CANCELLED;
-            case COMPLETED, CANCELLED -> false;
-        };
+    private boolean isValidStatusTransition(DeliveryStatus currentStatus, DeliveryStatus newStatus) {
+        switch (currentStatus) {
+            case DELIVERY_ACCEPTED:
+                return newStatus == DeliveryStatus.DELIVERY_ACCEPTED || newStatus == DeliveryStatus.CANCELLED;
+            case DELIVERY_PICKED_UP:
+                return newStatus == DeliveryStatus.COMPLETED || newStatus == DeliveryStatus.CANCELLED;
+            case COMPLETED:
+            case CANCELLED:
+                return false;  // No transitions allowed from these states
+            default:
+                return false;
+        }
     }
 }
