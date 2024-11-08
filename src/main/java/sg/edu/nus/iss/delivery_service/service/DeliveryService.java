@@ -75,10 +75,16 @@ public class DeliveryService {
     }
 
     boolean isValidStatusTransition(DeliveryStatus currentStatus, DeliveryStatus newStatus) {
-        return switch (currentStatus) {
-            case DELIVERY_ACCEPTED -> newStatus == DeliveryStatus.DELIVERY_PICKED_UP || newStatus == DeliveryStatus.CANCELLED;
-            case DELIVERY_PICKED_UP -> newStatus == DeliveryStatus.COMPLETED || newStatus == DeliveryStatus.CANCELLED;
-            case COMPLETED, CANCELLED -> false;
-        };
+        switch (currentStatus) {
+            case DELIVERY_ACCEPTED:
+                return newStatus == DeliveryStatus.DELIVERY_PICKED_UP || newStatus == DeliveryStatus.CANCELLED;
+            case DELIVERY_PICKED_UP:
+                return newStatus == DeliveryStatus.COMPLETED || newStatus == DeliveryStatus.CANCELLED;
+            case COMPLETED:
+            case CANCELLED:
+                return false;
+            default:
+                throw new IllegalArgumentException("Unexpected value: " + currentStatus);
+        }
     }
 }
