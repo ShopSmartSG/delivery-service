@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feature/shopsmart-72
+      - main
   pull_request:
     branches:
       - main
