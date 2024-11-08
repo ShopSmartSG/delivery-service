@@ -46,7 +46,7 @@ public class DeliveryServiceTest {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Delivery status created", response.getBody().getMessage());
-        assertEquals(DeliveryStatus.PENDING_PICKUP, response.getBody().getStatus());
+        assertEquals(DeliveryStatus.DELIVERY_ACCEPTED, response.getBody().getStatus());
 
         verify(deliveryRepository, times(1)).save(any(Delivery.class));
     }
@@ -69,15 +69,15 @@ public class DeliveryServiceTest {
     void testUpdateDeliveryStatus_DeliveryFound_ValidTransition() {
         Delivery delivery = new Delivery();
         delivery.setOrderId(orderId);
-        delivery.setStatus(DeliveryStatus.PENDING_PICKUP);
+        delivery.setStatus(DeliveryStatus.DELIVERY_ACCEPTED);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.PICKED_UP, deliveryPersonId, customerId, "");
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
         ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Delivery status updated", response.getBody().getMessage());
-        assertEquals(DeliveryStatus.PICKED_UP, response.getBody().getStatus());
+        assertEquals(DeliveryStatus.DELIVERY_PICKED_UP, response.getBody().getStatus());
 
         verify(deliveryRepository, times(1)).save(any(Delivery.class));
     }
@@ -86,7 +86,7 @@ public class DeliveryServiceTest {
     void testUpdateDeliveryStatus_DeliveryNotFound() {
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.empty());
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.PICKED_UP, deliveryPersonId, customerId, "");
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
         ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
 
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
@@ -99,10 +99,10 @@ public class DeliveryServiceTest {
     void testUpdateDeliveryStatus_InvalidStatusTransition() {
         Delivery delivery = new Delivery();
         delivery.setOrderId(orderId);
-        delivery.setStatus(DeliveryStatus.PICKED_UP);
+        delivery.setStatus(DeliveryStatus.DELIVERY_PICKED_UP);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.PENDING_PICKUP, deliveryPersonId, customerId, "");
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_ACCEPTED, deliveryPersonId, customerId, "");
         ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
@@ -115,10 +115,10 @@ public class DeliveryServiceTest {
     void testUpdateDeliveryStatus_SameStatus() {
         Delivery delivery = new Delivery();
         delivery.setOrderId(orderId);
-        delivery.setStatus(DeliveryStatus.PICKED_UP);
+        delivery.setStatus(DeliveryStatus.DELIVERY_PICKED_UP);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.PICKED_UP, deliveryPersonId, customerId, "");
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
         ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
@@ -131,7 +131,7 @@ public class DeliveryServiceTest {
     void testUpdateDeliveryStatus_FromDeliveredToAny() {
         Delivery delivery = new Delivery();
         delivery.setOrderId(orderId);
-        delivery.setStatus(DeliveryStatus.DELIVERED);
+        delivery.setStatus(DeliveryStatus.COMPLETED);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
         DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.CANCELLED, deliveryPersonId, customerId, "");
@@ -150,7 +150,7 @@ public class DeliveryServiceTest {
         delivery.setStatus(DeliveryStatus.CANCELLED);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.PICKED_UP, deliveryPersonId, customerId, "");
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
         ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
@@ -169,28 +169,28 @@ public class DeliveryServiceTest {
 
     @Test
     void testIsValidStatusTransition_FromPendingToInvalid() {
-        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.PENDING_PICKUP, DeliveryStatus.DELIVERED));
+        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERY_ACCEPTED, DeliveryStatus.COMPLETED));
     }
 
     @Test
     void testIsValidStatusTransition_FromPickedUpToPickedUp() {
-        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.PICKED_UP, DeliveryStatus.PICKED_UP));
+        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERY_PICKED_UP, DeliveryStatus.DELIVERY_PICKED_UP));
     }
 
     @Test
     void testIsValidStatusTransition_FromDeliveredToCancelled() {
-        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERED, DeliveryStatus.CANCELLED));
+        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.COMPLETED, DeliveryStatus.CANCELLED));
     }
 
     @Test
     void testUpdateDeliveryStatus_WithSameDeliveryPersonId() {
         Delivery delivery = new Delivery();
         delivery.setOrderId(orderId);
-        delivery.setStatus(DeliveryStatus.PENDING_PICKUP);
+        delivery.setStatus(DeliveryStatus.DELIVERY_ACCEPTED);
         delivery.setDeliveryPersonId(deliveryPersonId);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.PICKED_UP, deliveryPersonId, customerId, "");
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
         ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -215,7 +215,7 @@ public class DeliveryServiceTest {
 
     @Test
     void testUpdateDeliveryStatus_WithNullOrderId() {
-        DeliveryResponseStatusDTO statusUpdateDTO = new DeliveryResponseStatusDTO(null, DeliveryStatus.PICKED_UP, deliveryPersonId, customerId, "");
+        DeliveryResponseStatusDTO statusUpdateDTO = new DeliveryResponseStatusDTO(null, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
 
         ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(statusUpdateDTO);
 
@@ -229,26 +229,26 @@ public class DeliveryServiceTest {
     void testUpdateDeliveryStatus_WithValidTransition() {
         Delivery delivery = new Delivery();
         delivery.setOrderId(orderId);
-        delivery.setStatus(DeliveryStatus.PENDING_PICKUP);
+        delivery.setStatus(DeliveryStatus.DELIVERY_ACCEPTED);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO statusUpdateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.PICKED_UP, deliveryPersonId, customerId, "");
+        DeliveryResponseStatusDTO statusUpdateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
         ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(statusUpdateDTO);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Delivery status updated", response.getBody().getMessage());
-        assertEquals(DeliveryStatus.PICKED_UP, response.getBody().getStatus());
+        assertEquals(DeliveryStatus.DELIVERY_PICKED_UP, response.getBody().getStatus());
 
         verify(deliveryRepository, times(1)).save(any(Delivery.class));
     }
 
     @Test
     void testIsValidStatusTransition_FromPickedUpToCancelled() {
-        assertTrue(deliveryService.isValidStatusTransition(DeliveryStatus.PICKED_UP, DeliveryStatus.CANCELLED));
+        assertTrue(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERY_PICKED_UP, DeliveryStatus.CANCELLED));
     }
 
     @Test
     void testIsValidStatusTransition_FromDeliveredToDelivered() {
-        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERED, DeliveryStatus.DELIVERED));
+        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.COMPLETED, DeliveryStatus.COMPLETED));
     }
 }

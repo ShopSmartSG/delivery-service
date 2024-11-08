@@ -42,12 +42,12 @@ public class DeliveryService {
         delivery.setOrderId(orderId);
         delivery.setDeliveryPersonId(deliveryPersonId);
         delivery.setCustomerId(customerId);
-        delivery.setStatus(DeliveryStatus.PENDING_PICKUP);
+        delivery.setStatus(DeliveryStatus.DELIVERY_ACCEPTED);
 
         deliveryRepository.save(delivery);
 
         log.info("Created new delivery status for order ID {}", orderId);
-        return new ResponseEntity<>(new DeliveryResponseStatusDTO(orderId, DeliveryStatus.PENDING_PICKUP, deliveryPersonId, customerId, "Delivery status created"), HttpStatus.OK);
+        return new ResponseEntity<>(new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_ACCEPTED, deliveryPersonId, customerId, "Delivery status created"), HttpStatus.OK);
     }
 
 
@@ -76,9 +76,9 @@ public class DeliveryService {
 
     boolean isValidStatusTransition(DeliveryStatus currentStatus, DeliveryStatus newStatus) {
         return switch (currentStatus) {
-            case PENDING_PICKUP -> newStatus == DeliveryStatus.PICKED_UP || newStatus == DeliveryStatus.CANCELLED;
-            case PICKED_UP -> newStatus == DeliveryStatus.DELIVERED || newStatus == DeliveryStatus.CANCELLED;
-            case DELIVERED, CANCELLED -> false;
+            case DELIVERY_ACCEPTED -> newStatus == DeliveryStatus.DELIVERY_PICKED_UP || newStatus == DeliveryStatus.CANCELLED;
+            case DELIVERY_PICKED_UP -> newStatus == DeliveryStatus.COMPLETED || newStatus == DeliveryStatus.CANCELLED;
+            case COMPLETED, CANCELLED -> false;
         };
     }
 }
