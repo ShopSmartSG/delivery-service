@@ -25,17 +25,17 @@ public class DeliveryService {
         this.deliveryRepository = deliveryRepository;
     }
 
-    public ResponseEntity<DeliveryResponseStatusDTO> createDeliveryStatus(UUID orderId, UUID deliveryPersonId, UUID customerId) {
+    public DeliveryResponseStatusDTO createDeliveryStatus(UUID orderId, UUID deliveryPersonId, UUID customerId) {
         if (orderId == null || deliveryPersonId == null || customerId == null) {
             log.error("Invalid input: orderId, deliveryPersonId, and customerId must not be null");
-            return new ResponseEntity<>(new DeliveryResponseStatusDTO(null, null, null, null, "Invalid input: fields must not be null"), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new DeliveryResponseStatusDTO(null, null, null, null, "Invalid input: fields must not be null");
         }
 
         Optional<Delivery> existingDelivery = deliveryRepository.findByOrderId(orderId);
 
         if (existingDelivery.isPresent()) {
             log.warn("Delivery status for order ID {} already exists", orderId);
-            return new ResponseEntity<>(new DeliveryResponseStatusDTO(orderId, null, deliveryPersonId, customerId, "Delivery status already exists"), HttpStatus.CONFLICT);
+            return new DeliveryResponseStatusDTO(orderId, null, deliveryPersonId, customerId, "Delivery status already exists");
         }
 
         Delivery delivery = new Delivery();
@@ -47,23 +47,22 @@ public class DeliveryService {
         deliveryRepository.save(delivery);
 
         log.info("Created new delivery status for order ID {}", orderId);
-        return new ResponseEntity<>(new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_ACCEPTED, deliveryPersonId, customerId, "Delivery status created"), HttpStatus.OK);
+        return new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_ACCEPTED, deliveryPersonId, customerId, "Delivery status created");
     }
 
-
-    public ResponseEntity<DeliveryResponseStatusDTO> updateDeliveryStatus(DeliveryResponseStatusDTO statusUpdateDTO) {
+    public DeliveryResponseStatusDTO updateDeliveryStatus(DeliveryResponseStatusDTO statusUpdateDTO) {
         Optional<Delivery> deliveryOptional = deliveryRepository.findByOrderId(statusUpdateDTO.getOrderId());
 
         if (deliveryOptional.isEmpty()) {
             log.warn("No delivery found for order ID {}", statusUpdateDTO.getOrderId());
-            return new ResponseEntity<>(new DeliveryResponseStatusDTO(statusUpdateDTO.getOrderId(), null, statusUpdateDTO.getDeliveryPersonId(), statusUpdateDTO.getCustomerId(), "Delivery not found"), HttpStatus.NOT_FOUND);
+            return new DeliveryResponseStatusDTO(statusUpdateDTO.getOrderId(), null, statusUpdateDTO.getDeliveryPersonId(), statusUpdateDTO.getCustomerId(), "Delivery not found");
         }
 
         Delivery delivery = deliveryOptional.get();
 
         if (!isValidStatusTransition(delivery.getStatus(), statusUpdateDTO.getStatus())) {
             log.warn("Invalid status transition for order ID {} from {} to {}", statusUpdateDTO.getOrderId(), delivery.getStatus(), statusUpdateDTO.getStatus());
-            return new ResponseEntity<>(new DeliveryResponseStatusDTO(statusUpdateDTO.getOrderId(), delivery.getStatus(), statusUpdateDTO.getDeliveryPersonId(), statusUpdateDTO.getCustomerId(), "Invalid status transition"), HttpStatus.BAD_REQUEST);
+            return new DeliveryResponseStatusDTO(statusUpdateDTO.getOrderId(), delivery.getStatus(), statusUpdateDTO.getDeliveryPersonId(), statusUpdateDTO.getCustomerId(), "Invalid status transition");
         }
 
         delivery.setStatus(statusUpdateDTO.getStatus());
@@ -71,7 +70,7 @@ public class DeliveryService {
         deliveryRepository.save(delivery);
 
         log.info("Updated delivery status for order ID {} to {}", statusUpdateDTO.getOrderId(), statusUpdateDTO.getStatus());
-        return new ResponseEntity<>(new DeliveryResponseStatusDTO(statusUpdateDTO.getOrderId(), statusUpdateDTO.getStatus(), statusUpdateDTO.getDeliveryPersonId(), statusUpdateDTO.getCustomerId(), "Delivery status updated"), HttpStatus.OK);
+        return new DeliveryResponseStatusDTO(statusUpdateDTO.getOrderId(), statusUpdateDTO.getStatus(), statusUpdateDTO.getDeliveryPersonId(), statusUpdateDTO.getCustomerId(), "Delivery status updated");
     }
 
     boolean isValidStatusTransition(DeliveryStatus currentStatus, DeliveryStatus newStatus) {

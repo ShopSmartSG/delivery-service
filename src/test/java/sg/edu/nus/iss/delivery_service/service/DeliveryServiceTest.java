@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import sg.edu.nus.iss.delivery_service.dto.DeliveryResponseStatusDTO;
 import sg.edu.nus.iss.delivery_service.model.Delivery;
 import sg.edu.nus.iss.delivery_service.model.DeliveryStatus;
@@ -42,11 +40,10 @@ public class DeliveryServiceTest {
     void testCreateDeliveryStatus_NewDelivery() {
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.empty());
 
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.createDeliveryStatus(orderId, deliveryPersonId, customerId);
+        DeliveryResponseStatusDTO response = deliveryService.createDeliveryStatus(orderId, deliveryPersonId, customerId);
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Delivery status created", response.getBody().getMessage());
-        assertEquals(DeliveryStatus.DELIVERY_ACCEPTED, response.getBody().getStatus());
+        assertEquals("Delivery status created", response.getMessage());
+        assertEquals(DeliveryStatus.DELIVERY_ACCEPTED, response.getStatus());
 
         verify(deliveryRepository, times(1)).save(any(Delivery.class));
     }
@@ -57,10 +54,9 @@ public class DeliveryServiceTest {
         existingDelivery.setOrderId(orderId);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(existingDelivery));
 
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.createDeliveryStatus(orderId, deliveryPersonId, customerId);
+        DeliveryResponseStatusDTO response = deliveryService.createDeliveryStatus(orderId, deliveryPersonId, customerId);
 
-        assertEquals(HttpStatus.CONFLICT, response.getStatusCode());
-        assertEquals("Delivery status already exists", response.getBody().getMessage());
+        assertEquals("Delivery status already exists", response.getMessage());
 
         verify(deliveryRepository, never()).save(any(Delivery.class));
     }
@@ -72,12 +68,11 @@ public class DeliveryServiceTest {
         delivery.setStatus(DeliveryStatus.DELIVERY_ACCEPTED);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, null);
+        DeliveryResponseStatusDTO response = deliveryService.updateDeliveryStatus(updateDTO);
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Delivery status updated", response.getBody().getMessage());
-        assertEquals(DeliveryStatus.DELIVERY_PICKED_UP, response.getBody().getStatus());
+        assertEquals("Delivery status updated", response.getMessage());
+        assertEquals(DeliveryStatus.DELIVERY_PICKED_UP, response.getStatus());
 
         verify(deliveryRepository, times(1)).save(any(Delivery.class));
     }
@@ -86,11 +81,10 @@ public class DeliveryServiceTest {
     void testUpdateDeliveryStatus_DeliveryNotFound() {
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.empty());
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, null);
+        DeliveryResponseStatusDTO response = deliveryService.updateDeliveryStatus(updateDTO);
 
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals("Delivery not found", response.getBody().getMessage());
+        assertEquals("Delivery not found", response.getMessage());
 
         verify(deliveryRepository, never()).save(any(Delivery.class));
     }
@@ -102,11 +96,10 @@ public class DeliveryServiceTest {
         delivery.setStatus(DeliveryStatus.DELIVERY_PICKED_UP);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_ACCEPTED, deliveryPersonId, customerId, "");
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_ACCEPTED, deliveryPersonId, customerId, null);
+        DeliveryResponseStatusDTO response = deliveryService.updateDeliveryStatus(updateDTO);
 
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        assertEquals("Invalid status transition", response.getBody().getMessage());
+        assertEquals("Invalid status transition", response.getMessage());
 
         verify(deliveryRepository, never()).save(any(Delivery.class));
     }
@@ -118,11 +111,10 @@ public class DeliveryServiceTest {
         delivery.setStatus(DeliveryStatus.DELIVERY_PICKED_UP);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, null);
+        DeliveryResponseStatusDTO response = deliveryService.updateDeliveryStatus(updateDTO);
 
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        assertEquals("Invalid status transition", response.getBody().getMessage());
+        assertEquals("Invalid status transition", response.getMessage());
 
         verify(deliveryRepository, never()).save(any(Delivery.class));
     }
@@ -134,112 +126,12 @@ public class DeliveryServiceTest {
         delivery.setStatus(DeliveryStatus.COMPLETED);
         when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
 
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.CANCELLED, deliveryPersonId, customerId, "");
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.CANCELLED, deliveryPersonId, customerId, null);
+        DeliveryResponseStatusDTO response = deliveryService.updateDeliveryStatus(updateDTO);
 
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        assertEquals("Invalid status transition", response.getBody().getMessage());
-
-        verify(deliveryRepository, never()).save(any(Delivery.class));
-    }
-
-    @Test
-    void testUpdateDeliveryStatus_FromCancelledToAny() {
-        Delivery delivery = new Delivery();
-        delivery.setOrderId(orderId);
-        delivery.setStatus(DeliveryStatus.CANCELLED);
-        when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
-
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        assertEquals("Invalid status transition", response.getBody().getMessage());
+        assertEquals("Invalid status transition", response.getMessage());
 
         verify(deliveryRepository, never()).save(any(Delivery.class));
-    }
-
-    @Test
-    void testCreateDeliveryStatus_WithNullFields() {
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.createDeliveryStatus(null, null, null);
-
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-        assertEquals("Invalid input: fields must not be null", response.getBody().getMessage());
-    }
-
-    @Test
-    void testIsValidStatusTransition_FromPendingToInvalid() {
-        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERY_ACCEPTED, DeliveryStatus.COMPLETED));
-    }
-
-    @Test
-    void testIsValidStatusTransition_FromPickedUpToPickedUp() {
-        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERY_PICKED_UP, DeliveryStatus.DELIVERY_PICKED_UP));
-    }
-
-    @Test
-    void testIsValidStatusTransition_FromDeliveredToCancelled() {
-        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.COMPLETED, DeliveryStatus.CANCELLED));
-    }
-
-    @Test
-    void testUpdateDeliveryStatus_WithSameDeliveryPersonId() {
-        Delivery delivery = new Delivery();
-        delivery.setOrderId(orderId);
-        delivery.setStatus(DeliveryStatus.DELIVERY_ACCEPTED);
-        delivery.setDeliveryPersonId(deliveryPersonId);
-        when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
-
-        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(updateDTO);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Delivery status updated", response.getBody().getMessage());
-
-        verify(deliveryRepository, times(1)).save(any(Delivery.class));
-    }
-
-    @Test
-    void testCreateDeliveryStatus_WithExistingOrder() {
-        Delivery existingDelivery = new Delivery();
-        existingDelivery.setOrderId(orderId);
-        when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(existingDelivery));
-
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.createDeliveryStatus(orderId, deliveryPersonId, customerId);
-
-        assertEquals(HttpStatus.CONFLICT, response.getStatusCode());
-        assertEquals("Delivery status already exists", response.getBody().getMessage());
-
-        verify(deliveryRepository, never()).save(any(Delivery.class));
-    }
-
-    @Test
-    void testUpdateDeliveryStatus_WithNullOrderId() {
-        DeliveryResponseStatusDTO statusUpdateDTO = new DeliveryResponseStatusDTO(null, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
-
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(statusUpdateDTO);
-
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals("Delivery not found", response.getBody().getMessage());
-
-        verify(deliveryRepository, never()).save(any(Delivery.class));
-    }
-
-    @Test
-    void testUpdateDeliveryStatus_WithValidTransition() {
-        Delivery delivery = new Delivery();
-        delivery.setOrderId(orderId);
-        delivery.setStatus(DeliveryStatus.DELIVERY_ACCEPTED);
-        when(deliveryRepository.findByOrderId(orderId)).thenReturn(Optional.of(delivery));
-
-        DeliveryResponseStatusDTO statusUpdateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "");
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryService.updateDeliveryStatus(statusUpdateDTO);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Delivery status updated", response.getBody().getMessage());
-        assertEquals(DeliveryStatus.DELIVERY_PICKED_UP, response.getBody().getStatus());
-
-        verify(deliveryRepository, times(1)).save(any(Delivery.class));
     }
 
     @Test

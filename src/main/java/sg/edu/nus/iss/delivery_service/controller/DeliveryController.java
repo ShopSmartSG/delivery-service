@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import sg.edu.nus.iss.delivery_service.dto.DeliveryResponseStatusDTO;
 import sg.edu.nus.iss.delivery_service.service.DeliveryService;
 
-import java.util.UUID;
-
 @RestController
 @RequestMapping("/deliveries")
 public class DeliveryController {
@@ -21,15 +19,17 @@ public class DeliveryController {
 
     @PostMapping("/")
     public ResponseEntity<DeliveryResponseStatusDTO> createDeliveryStatus(
-            @RequestParam UUID orderId,
-            @RequestParam UUID deliveryPersonId,
-            @RequestParam UUID customerId) {
-        return deliveryService.createDeliveryStatus(orderId, deliveryPersonId, customerId);
+            @RequestBody DeliveryResponseStatusDTO requestDTO) {
+        DeliveryResponseStatusDTO responseDTO = deliveryService.createDeliveryStatus(
+                requestDTO.getOrderId(), requestDTO.getDeliveryPersonId(), requestDTO.getCustomerId()
+        );
+        return ResponseEntity.ok(responseDTO);
     }
 
     @PutMapping("/status")
     public ResponseEntity<DeliveryResponseStatusDTO> updateDeliveryStatus(
             @RequestBody DeliveryResponseStatusDTO statusUpdateDTO) {
-        return deliveryService.updateDeliveryStatus(statusUpdateDTO);
+        DeliveryResponseStatusDTO responseDTO = deliveryService.updateDeliveryStatus(statusUpdateDTO);
+        return ResponseEntity.ok(responseDTO);
     }
 }
