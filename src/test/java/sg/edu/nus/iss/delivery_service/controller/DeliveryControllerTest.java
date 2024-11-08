@@ -40,9 +40,9 @@ class DeliveryControllerTest {
     @Test
     void createDeliveryStatus_shouldReturnCreatedResponse() {
         DeliveryResponseStatusDTO responseDto = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_ACCEPTED, deliveryPersonId, customerId, "Delivery status created");
-        when(deliveryService.createDeliveryStatus(orderId, deliveryPersonId, customerId)).thenReturn(new ResponseEntity<>(responseDto, HttpStatus.OK));
+        when(deliveryService.createDeliveryStatus(orderId, deliveryPersonId, customerId)).thenReturn(responseDto);
 
-        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryController.createDeliveryStatus(orderId, deliveryPersonId, customerId);
+        ResponseEntity<DeliveryResponseStatusDTO> response = deliveryController.createDeliveryStatus(responseDto);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Delivery status created", response.getBody().getMessage());
@@ -53,7 +53,7 @@ class DeliveryControllerTest {
     void updateDeliveryStatus_shouldReturnUpdatedResponse() {
         DeliveryResponseStatusDTO updateDto = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, null);
         DeliveryResponseStatusDTO responseDto = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, "Delivery status updated");
-        when(deliveryService.updateDeliveryStatus(updateDto)).thenReturn(new ResponseEntity<>(responseDto, HttpStatus.OK));
+        when(deliveryService.updateDeliveryStatus(updateDto)).thenReturn(responseDto);
 
         ResponseEntity<DeliveryResponseStatusDTO> response = deliveryController.updateDeliveryStatus(updateDto);
 

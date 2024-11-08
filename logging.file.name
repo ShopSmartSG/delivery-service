@@ -1,0 +1,241 @@
+2024-11-08 19:26:52 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID ab1bd27f-f51a-4ca6-a2ba-da63c50695f8 from DELIVERY_PICKED_UP to DELIVERY_PICKED_UP
+2024-11-08 19:26:52 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID 3d1328d1-2321-4a54-b04c-0951c5787dd6 to DELIVERY_PICKED_UP
+2024-11-08 19:26:52 WARN  s.e.n.i.d.service.DeliveryService - Delivery status for order ID 25438a2c-a801-4eff-ba78-864e69f04692 already exists
+2024-11-08 19:26:52 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 3f0f736a-8061-4303-9480-019e193bad98 from CANCELLED to DELIVERY_PICKED_UP
+2024-11-08 19:26:52 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID 9d9655fb-ac25-4b83-985c-e472db31c44e to DELIVERY_PICKED_UP
+2024-11-08 19:26:52 INFO  s.e.n.i.d.service.DeliveryService - Created new delivery status for order ID 9284a49c-ba15-471f-9c38-aa7eef50b494
+2024-11-08 19:26:52 ERROR s.e.n.i.d.service.DeliveryService - Invalid input: orderId, deliveryPersonId, and customerId must not be null
+2024-11-08 19:26:52 WARN  s.e.n.i.d.service.DeliveryService - No delivery found for order ID f6c2a1f0-7afe-4207-b4d1-e570412c740f
+2024-11-08 19:26:52 WARN  s.e.n.i.d.service.DeliveryService - Delivery status for order ID 2658d793-e620-47bd-874a-b50d51ba2547 already exists
+2024-11-08 19:26:52 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 1030aab5-0acf-45b4-a93d-21ffac129edd from COMPLETED to CANCELLED
+2024-11-08 19:26:52 WARN  s.e.n.i.d.service.DeliveryService - No delivery found for order ID null
+2024-11-08 19:26:52 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 49c76454-01ae-465a-bd06-d2ee0c5d37c0 from DELIVERY_PICKED_UP to DELIVERY_ACCEPTED
+2024-11-08 19:26:52 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID 2d407106-734f-46ca-b1f1-8c26c5ce9500 to DELIVERY_PICKED_UP
+2024-11-08 19:27:08 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 57146d6e-2411-44b2-8448-a9ef40ddfc3a from DELIVERY_PICKED_UP to DELIVERY_PICKED_UP
+2024-11-08 19:27:08 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID c4ca953d-95e9-41d6-a0ba-da1a607d200c to DELIVERY_PICKED_UP
+2024-11-08 19:27:08 WARN  s.e.n.i.d.service.DeliveryService - Delivery status for order ID b90b4a32-ffa6-4875-9e32-6d2c78be119d already exists
+2024-11-08 19:27:08 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 9d7a59e3-7728-43f4-9a20-4dde795c6633 from CANCELLED to DELIVERY_PICKED_UP
+2024-11-08 19:27:08 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID a921f108-28b1-4853-8adc-e7c89692ec9f to DELIVERY_PICKED_UP
+2024-11-08 19:27:08 INFO  s.e.n.i.d.service.DeliveryService - Created new delivery status for order ID e587bc0b-cd45-4908-b86d-e088abe7b696
+2024-11-08 19:27:08 ERROR s.e.n.i.d.service.DeliveryService - Invalid input: orderId, deliveryPersonId, and customerId must not be null
+2024-11-08 19:27:08 WARN  s.e.n.i.d.service.DeliveryService - No delivery found for order ID b8dd3274-dfef-4b55-924f-55e838f3b9fc
+2024-11-08 19:27:08 WARN  s.e.n.i.d.service.DeliveryService - Delivery status for order ID 5ecb0d20-2486-45af-b7d1-976dbabb27c4 already exists
+2024-11-08 19:27:08 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID df8cb2d8-72c4-4c76-91eb-cd63d2ca33b3 from COMPLETED to CANCELLED
+2024-11-08 19:27:08 WARN  s.e.n.i.d.service.DeliveryService - No delivery found for order ID null
+2024-11-08 19:27:08 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 2be59fac-5d73-408f-8d16-1fbd403c9318 from DELIVERY_PICKED_UP to DELIVERY_ACCEPTED
+2024-11-08 19:27:08 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID 4e4e8f1e-5d98-412b-9b3d-f2117825f91b to DELIVERY_PICKED_UP
+2024-11-08 19:27:12 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-11-08 19:27:12 INFO  s.e.n.i.d.DeliveryServiceApplication - Starting DeliveryServiceApplication using Java 21.0.3 with PID 89048 (/Users/rituthori/projects/delivery/delivery-service/target/classes started by rituthori in /Users/rituthori/projects/delivery/delivery-service)
+2024-11-08 19:27:12 INFO  s.e.n.i.d.DeliveryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-08 19:27:12 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-08 19:27:12 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-08 19:27:12 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 19:27:12 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-11-08 19:27:12 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface sg.edu.nus.iss.delivery_service.repository.DeliveryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-11-08 19:27:12 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 JDBC repository interfaces.
+2024-11-08 19:27:12 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 19:27:12 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-08 19:27:12 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 7 ms. Found 1 JPA repository interface.
+2024-11-08 19:27:13 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-08 19:27:13 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-08 19:27:13 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-08 19:27:13 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-08 19:27:13 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-08 19:27:13 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 536 ms
+2024-11-08 19:27:13 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-08 19:27:13 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-08 19:27:13 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-08 19:27:13 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-08 19:27:13 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-08 19:27:13 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5d8c89ac
+2024-11-08 19:27:13 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-08 19:27:13 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-08 19:27:13 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-08 19:27:13 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08 19:27:13 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-08 19:27:13 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-11-08 19:27:13 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-08 19:27:14 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-08 19:27:14 INFO  s.e.n.i.d.DeliveryServiceApplication - Started DeliveryServiceApplication in 1.629 seconds (process running for 1.861)
+2024-11-08 19:27:31 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-08 19:27:31 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-08 19:27:31 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-11-08 19:27:31 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 113 ms
+2024-11-08 19:31:48 INFO  s.e.n.i.d.service.DeliveryService - Created new delivery status for order ID 137c64ec-1596-4032-96c0-976e42cd9f67
+2024-11-08 20:27:21 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2024-11-08 20:27:21 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-11-08 20:27:21 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08 20:27:21 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-11-08 20:27:21 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-11-08 20:27:21 INFO  s.e.n.i.d.DeliveryServiceApplication - Starting DeliveryServiceApplication using Java 21.0.3 with PID 89048 (/Users/rituthori/projects/delivery/delivery-service/target/classes started by rituthori in /Users/rituthori/projects/delivery/delivery-service)
+2024-11-08 20:27:21 INFO  s.e.n.i.d.DeliveryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-08 20:27:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 20:27:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-11-08 20:27:21 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface sg.edu.nus.iss.delivery_service.repository.DeliveryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-11-08 20:27:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 2 ms. Found 0 JDBC repository interfaces.
+2024-11-08 20:27:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 20:27:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-08 20:27:21 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interface.
+2024-11-08 20:27:21 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-08 20:27:21 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-08 20:27:21 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-08 20:27:21 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-08 20:27:21 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-08 20:27:21 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 98 ms
+2024-11-08 20:27:21 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-08 20:27:21 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-08 20:27:21 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-08 20:27:21 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-08 20:27:21 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@c4015ae
+2024-11-08 20:27:21 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-08 20:27:21 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-08 20:27:21 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-08 20:27:21 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08 20:27:21 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-08 20:27:21 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-11-08 20:27:21 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-08 20:27:21 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-08 20:27:21 INFO  s.e.n.i.d.DeliveryServiceApplication - Started DeliveryServiceApplication in 0.254 seconds (process running for 3609.631)
+2024-11-08 20:27:21 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-11-08 20:33:40 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID e338b16b-3d3e-4cfc-b4fd-4fbd2cf98219 from DELIVERY_PICKED_UP to DELIVERY_PICKED_UP
+2024-11-08 20:33:40 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID b0b3a39a-ab43-4855-9e50-6ca143d843b4 to DELIVERY_PICKED_UP
+2024-11-08 20:33:40 INFO  s.e.n.i.d.service.DeliveryService - Created new delivery status for order ID b8ff2ac2-099f-497a-b6b3-914d1bc4425b
+2024-11-08 20:33:40 WARN  s.e.n.i.d.service.DeliveryService - No delivery found for order ID 2011b3d7-fec1-479e-9d0d-e43f2cf968c0
+2024-11-08 20:33:40 WARN  s.e.n.i.d.service.DeliveryService - Delivery status for order ID 8c968026-dc92-493b-91db-2a24d4e2fbd9 already exists
+2024-11-08 20:33:40 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 0c7bb3af-17ea-4c01-9219-761893866f44 from COMPLETED to CANCELLED
+2024-11-08 20:33:40 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID bc041a1e-fbbb-4fcc-b461-7c72c16cf67d from DELIVERY_PICKED_UP to DELIVERY_ACCEPTED
+2024-11-08 21:01:56 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID dcbd39d1-8b33-4f8d-b35b-a799826962ce from DELIVERY_PICKED_UP to DELIVERY_PICKED_UP
+2024-11-08 21:01:56 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID 61e9acce-d255-43e7-b6dc-e9ad22660886 to DELIVERY_PICKED_UP
+2024-11-08 21:01:56 INFO  s.e.n.i.d.service.DeliveryService - Created new delivery status for order ID 094da3ea-d5a4-4cf8-96f8-80fea1980518
+2024-11-08 21:01:56 WARN  s.e.n.i.d.service.DeliveryService - No delivery found for order ID e5fa9521-fbb7-4dbf-a013-e215cb754b9c
+2024-11-08 21:01:56 WARN  s.e.n.i.d.service.DeliveryService - Delivery status for order ID 8f3ecce8-2ece-4cbe-9169-20176b412aca already exists
+2024-11-08 21:01:56 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 926b7438-25c3-4adf-a57c-b2aa39498ce3 from COMPLETED to CANCELLED
+2024-11-08 21:01:56 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 5ec8ea09-180b-4979-b5ac-4ea133752418 from DELIVERY_PICKED_UP to DELIVERY_ACCEPTED
+2024-11-08 21:04:22 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 889059d4-e3bc-4811-9185-e61d9843a6d5 from DELIVERY_PICKED_UP to DELIVERY_PICKED_UP
+2024-11-08 21:04:22 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID 1247598d-3918-4e92-b366-40883dc6b174 to DELIVERY_PICKED_UP
+2024-11-08 21:04:22 INFO  s.e.n.i.d.service.DeliveryService - Created new delivery status for order ID e5dbebb4-5e1f-4e2f-b769-cd9e65255cd6
+2024-11-08 21:04:22 WARN  s.e.n.i.d.service.DeliveryService - No delivery found for order ID f3b1567c-bb8b-464c-99c1-2d68546bb6cf
+2024-11-08 21:04:22 WARN  s.e.n.i.d.service.DeliveryService - Delivery status for order ID ff4ddbad-d13e-491b-9928-18b960588b11 already exists
+2024-11-08 21:04:22 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID c6df6ac3-143b-4321-aa53-3abb6815a5ca from COMPLETED to CANCELLED
+2024-11-08 21:04:22 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 9cfe560c-cd5c-422d-b7e2-2472f59d9fd7 from DELIVERY_PICKED_UP to DELIVERY_ACCEPTED
+2024-11-08 21:04:43 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 13 class path changes (0 additions, 13 deletions, 0 modifications)
+2024-11-08 21:04:43 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-11-08 21:04:43 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08 21:04:43 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2024-11-08 21:04:43 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2024-11-08 21:04:48 INFO  s.e.n.i.d.DeliveryServiceApplication - Starting DeliveryServiceApplication using Java 21.0.3 with PID 89048 (/Users/rituthori/projects/delivery/delivery-service/target/classes started by rituthori in /Users/rituthori/projects/delivery/delivery-service)
+2024-11-08 21:04:48 INFO  s.e.n.i.d.DeliveryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-08 21:04:48 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 21:04:48 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-11-08 21:04:48 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface sg.edu.nus.iss.delivery_service.repository.DeliveryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-11-08 21:04:48 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 2 ms. Found 0 JDBC repository interfaces.
+2024-11-08 21:04:48 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 21:04:48 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-08 21:04:48 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 2 ms. Found 1 JPA repository interface.
+2024-11-08 21:04:48 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-08 21:04:48 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-08 21:04:48 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-08 21:04:48 INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-08 21:04:48 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 98 ms
+2024-11-08 21:04:48 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-08 21:04:48 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-08 21:04:48 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-08 21:04:48 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2024-11-08 21:04:48 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@bd0d5d6
+2024-11-08 21:04:48 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2024-11-08 21:04:48 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-08 21:04:48 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-08 21:04:48 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08 21:04:48 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-08 21:04:48 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-11-08 21:04:48 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-08 21:04:48 INFO  s.e.n.i.d.DeliveryServiceApplication - Started DeliveryServiceApplication in 0.257 seconds (process running for 5856.228)
+2024-11-08 21:04:48 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-11-08 21:04:48 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 9fef3780-23d4-4cb2-9261-16a9ae33761c from DELIVERY_PICKED_UP to DELIVERY_PICKED_UP
+2024-11-08 21:04:48 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID d1ea6246-51ce-4f06-ba51-7a7ecba7b7ff to DELIVERY_PICKED_UP
+2024-11-08 21:04:48 INFO  s.e.n.i.d.service.DeliveryService - Created new delivery status for order ID e9047afb-a60f-453d-8852-e003354887b7
+2024-11-08 21:04:48 WARN  s.e.n.i.d.service.DeliveryService - No delivery found for order ID 4e1a7d37-5635-4873-b2cb-f0556f62d364
+2024-11-08 21:04:48 WARN  s.e.n.i.d.service.DeliveryService - Delivery status for order ID e06d4f42-2237-404a-b119-5508acd6264d already exists
+2024-11-08 21:04:48 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID a2baf0a6-d9b0-46bd-af68-459cc2be4efa from COMPLETED to CANCELLED
+2024-11-08 21:04:48 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 723114dd-7d6a-460e-aee8-ad1945e31057 from DELIVERY_PICKED_UP to DELIVERY_ACCEPTED
+2024-11-08 21:05:17 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 13 class path changes (0 additions, 13 deletions, 0 modifications)
+2024-11-08 21:05:17 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08 21:05:17 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2024-11-08 21:05:17 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2024-11-08 21:05:22 INFO  s.e.n.i.d.DeliveryServiceApplication - Starting DeliveryServiceApplication using Java 21.0.3 with PID 89048 (/Users/rituthori/projects/delivery/delivery-service/target/classes started by rituthori in /Users/rituthori/projects/delivery/delivery-service)
+2024-11-08 21:05:22 INFO  s.e.n.i.d.DeliveryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-08 21:05:22 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 21:05:22 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-11-08 21:05:22 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface sg.edu.nus.iss.delivery_service.repository.DeliveryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-11-08 21:05:22 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JDBC repository interfaces.
+2024-11-08 21:05:22 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 21:05:22 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-08 21:05:22 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 1 JPA repository interface.
+2024-11-08 21:05:22 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-08 21:05:22 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-08 21:05:22 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-08 21:05:22 INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-08 21:05:22 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 87 ms
+2024-11-08 21:05:22 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-08 21:05:22 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-08 21:05:22 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-08 21:05:22 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2024-11-08 21:05:22 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@7b128444
+2024-11-08 21:05:22 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2024-11-08 21:05:22 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-08 21:05:22 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-08 21:05:22 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08 21:05:22 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-08 21:05:22 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-11-08 21:05:22 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-08 21:05:22 INFO  s.e.n.i.d.DeliveryServiceApplication - Started DeliveryServiceApplication in 0.259 seconds (process running for 5890.534)
+2024-11-08 21:05:22 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2024-11-08 21:05:23 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID ca6f61a4-1ec0-43ae-9219-a40814bcc156 from DELIVERY_PICKED_UP to DELIVERY_PICKED_UP
+2024-11-08 21:05:23 INFO  s.e.n.i.d.service.DeliveryService - Updated delivery status for order ID 71b2b8d8-b326-4dd2-ad66-f285c5c2b7b8 to DELIVERY_PICKED_UP
+2024-11-08 21:05:23 INFO  s.e.n.i.d.service.DeliveryService - Created new delivery status for order ID 2ee0dba9-fe06-4d43-b5cd-8573d90cf5b2
+2024-11-08 21:05:23 WARN  s.e.n.i.d.service.DeliveryService - No delivery found for order ID b30c490f-6214-4abc-8c62-d8f35f37d7c2
+2024-11-08 21:05:23 WARN  s.e.n.i.d.service.DeliveryService - Delivery status for order ID 911e9a2a-cc14-4b8e-bb11-1d65258a3bb4 already exists
+2024-11-08 21:05:23 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID 7d5882a1-2d8f-4749-9ddd-c825e799ace2 from COMPLETED to CANCELLED
+2024-11-08 21:05:23 WARN  s.e.n.i.d.service.DeliveryService - Invalid status transition for order ID bf286ae6-d553-4a1b-8aea-38c8b47bf7ec from DELIVERY_PICKED_UP to DELIVERY_ACCEPTED
+2024-11-08 21:05:44 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08 21:05:44 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2024-11-08 21:05:44 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2024-11-08 21:05:46 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-11-08 21:05:46 INFO  s.e.n.i.d.DeliveryServiceApplication - Starting DeliveryServiceApplication using Java 21.0.3 with PID 90454 (/Users/rituthori/projects/delivery/delivery-service/target/classes started by rituthori in /Users/rituthori/projects/delivery/delivery-service)
+2024-11-08 21:05:46 INFO  s.e.n.i.d.DeliveryServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-08 21:05:46 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-11-08 21:05:46 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-11-08 21:05:46 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 21:05:46 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-11-08 21:05:46 INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface sg.edu.nus.iss.delivery_service.repository.DeliveryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-11-08 21:05:46 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 JDBC repository interfaces.
+2024-11-08 21:05:46 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-11-08 21:05:46 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-08 21:05:46 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 1 JPA repository interface.
+2024-11-08 21:05:46 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-08 21:05:46 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-08 21:05:46 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-08 21:05:46 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-08 21:05:46 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-08 21:05:46 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 582 ms
+2024-11-08 21:05:46 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-08 21:05:46 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-08 21:05:46 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-08 21:05:46 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-08 21:05:46 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-08 21:05:47 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5419958a
+2024-11-08 21:05:47 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-08 21:05:47 WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-08 21:05:47 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-08 21:05:47 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08 21:05:47 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-08 21:05:47 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-11-08 21:05:47 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-08 21:05:47 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-08 21:05:47 INFO  s.e.n.i.d.DeliveryServiceApplication - Started DeliveryServiceApplication in 1.791 seconds (process running for 2.063)
+2024-11-08 21:06:23 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-08 21:06:23 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-08 21:06:23 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-11-08 21:06:23 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 119 ms
+2024-11-08 21:06:47 WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.InvalidDataAccessApiUsageException: No enum constant sg.edu.nus.iss.delivery_service.model.DeliveryStatus.PENDING_PICKUP]
+2024-11-08 21:07:41 INFO  s.e.n.i.d.service.DeliveryService - Created new delivery status for order ID 3fa85f64-5717-4562-b3fc-2c963f66afa4
