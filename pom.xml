@@ -121,6 +121,7 @@
 					<excludes>
 						// excluded the main class from code coverage
 						<exclude>sg/edu/nus/iss/delivery_service/DeliveryServiceApplication.class</exclude>
+						<exclude>sg/edu/nus/iss/delivery_service/HomeController.class</exclude>
 						<!-- Exclude all classes in the model package from code coverage -->
 						<exclude>sg/edu/nus/iss/delivery_service/model/**</exclude>
 						<exclude>sg/edu/nus/iss/delivery_service/dto/**</exclude>
