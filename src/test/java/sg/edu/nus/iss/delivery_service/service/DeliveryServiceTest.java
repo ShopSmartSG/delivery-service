@@ -62,6 +62,36 @@ public class DeliveryServiceTest {
     }
 
     @Test
+    void testCreateDeliveryStatus_InvalidInput_NullOrderId() {
+        DeliveryResponseStatusDTO response = deliveryService.createDeliveryStatus(null, deliveryPersonId, customerId);
+
+        assertEquals("Invalid input: fields must not be null", response.getMessage());
+        assertNull(response.getStatus());
+
+        verify(deliveryRepository, never()).save(any(Delivery.class));
+    }
+
+    @Test
+    void testCreateDeliveryStatus_InvalidInput_NullDeliveryPersonId() {
+        DeliveryResponseStatusDTO response = deliveryService.createDeliveryStatus(orderId, null, customerId);
+
+        assertEquals("Invalid input: fields must not be null", response.getMessage());
+        assertNull(response.getStatus());
+
+        verify(deliveryRepository, never()).save(any(Delivery.class));
+    }
+
+    @Test
+    void testCreateDeliveryStatus_InvalidInput_NullCustomerId() {
+        DeliveryResponseStatusDTO response = deliveryService.createDeliveryStatus(orderId, deliveryPersonId, null);
+
+        assertEquals("Invalid input: fields must not be null", response.getMessage());
+        assertNull(response.getStatus());
+
+        verify(deliveryRepository, never()).save(any(Delivery.class));
+    }
+
+    @Test
     void testUpdateDeliveryStatus_DeliveryFound_ValidTransition() {
         Delivery delivery = new Delivery();
         delivery.setOrderId(orderId);
@@ -120,7 +150,7 @@ public class DeliveryServiceTest {
     }
 
     @Test
-    void testUpdateDeliveryStatus_FromDeliveredToAny() {
+    void testUpdateDeliveryStatus_FromCompletedToAny() {
         Delivery delivery = new Delivery();
         delivery.setOrderId(orderId);
         delivery.setStatus(DeliveryStatus.COMPLETED);
@@ -135,12 +165,39 @@ public class DeliveryServiceTest {
     }
 
     @Test
-    void testIsValidStatusTransition_FromPickedUpToCancelled() {
-        assertTrue(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERY_PICKED_UP, DeliveryStatus.CANCELLED));
+    void testIsValidStatusTransition_FromDeliveryAcceptedToPickedUp() {
+        assertTrue(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERY_ACCEPTED, DeliveryStatus.DELIVERY_PICKED_UP));
     }
 
     @Test
-    void testIsValidStatusTransition_FromDeliveredToDelivered() {
-        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.COMPLETED, DeliveryStatus.COMPLETED));
+    void testIsValidStatusTransition_FromPickedUpToCompleted() {
+        assertTrue(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERY_PICKED_UP, DeliveryStatus.COMPLETED));
+    }
+
+    @Test
+    void testIsValidStatusTransition_FromCompletedToCancelled() {
+        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.COMPLETED, DeliveryStatus.CANCELLED));
+    }
+
+    @Test
+    void testIsValidStatusTransition_InvalidNullStatusTransition() {
+        assertFalse(deliveryService.isValidStatusTransition(DeliveryStatus.DELIVERY_ACCEPTED, null));
+    }
+
+    @Test
+    void testUpdateDeliveryStatus_NullStatusUpdateDTO() {
+        assertThrows(NullPointerException.class, () ->
+                deliveryService.updateDeliveryStatus(null));
+    }
+
+    @Test
+    void testUpdateDeliveryStatus_RepositoryException() {
+        when(deliveryRepository.findByOrderId(orderId)).thenThrow(new RuntimeException("Database error"));
+
+        DeliveryResponseStatusDTO updateDTO = new DeliveryResponseStatusDTO(orderId, DeliveryStatus.DELIVERY_PICKED_UP, deliveryPersonId, customerId, null);
+        RuntimeException thrown = assertThrows(RuntimeException.class, () ->
+                deliveryService.updateDeliveryStatus(updateDTO));
+
+        assertEquals("Database error", thrown.getMessage());
     }
 }
