@@ -84,8 +84,13 @@ jobs:
 
       - name: Build, Test, and Analyze with Maven
         run: |
-          mvn clean verify sonar:sonar \
-            -Dsonar.projectKey=ShopSmartSG_delivery-service \
+          mvn clean verify \
+            -Ddependency-check.skip=false \
+            -DnvdApiDelay=5000 \
+            -Dconnection.timeout=60000 \
+            -Dread.timeout=60000 \
+            sonar:sonar \
+            -Dsonar.projectKey=ShopSmartSG_shopsmartsg-backend \
             -Dsonar.organization=shopsmartsg \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
